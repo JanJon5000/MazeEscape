@@ -1,9 +1,9 @@
 # MazeGame
 I decided to divide this repo's README into a few sections:
-    -[Maze generator](#maze-generator)
-    -soon
-    -soon
-    -soon
+    <p> -[Maze generator](#maze-generator) </p>
+    <p> -soon </p>
+    <p> -soon </p>
+    <p> -soon </p>
 
 <hr>
 
