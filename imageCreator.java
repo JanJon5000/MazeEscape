@@ -4,12 +4,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class imageCreator {
+    public BufferedImage outputMaze;
     public imageCreator(byte[][] inputMaze){
         byte cellSize = 10;
         var width = (short) (inputMaze[0].length * cellSize);
         var height = (short) (inputMaze.length * cellSize);
 
-        BufferedImage outputMaze = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        outputMaze = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = outputMaze.createGraphics();
         for (int y = 0; y < inputMaze.length; y++) {
             for (int x = 0; x < inputMaze[y].length; x++) {
