@@ -11,6 +11,7 @@ public class playerClass extends JPanel{
     private BufferedImage screen;
     private double planeX = 0.66;
     private double planeY = 0;
+    private Graphics2D g2d;
     public playerClass(labirynth map){
         this.maze = map.arrayAccess();
         Random r = new Random();
@@ -29,7 +30,8 @@ public class playerClass extends JPanel{
     }
     //function creating an image that is later displayed on the screen in the main window
     public BufferedImage rayCast(int screenWidth, int screenHeight){
-        screen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
+        this.screen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
+        this.g2d = screen.createGraphics();
         //a loop creating a vertical line for every x coordinate in screen's width range
         for(short x=0;x<screenWidth;x++){
             //cameraX is a variable that contains current x coordinate of the camera corresponding to the current x in the loop
@@ -85,7 +87,11 @@ public class playerClass extends JPanel{
                     mapY += stepY;
                     side = 1;
                 }
-                if(this.maze[mapX][mapY] > 0) hit = 1;
+                try{
+                    if(this.maze[mapX][mapY] > 0) hit = 1;
+                }catch(ArrayIndexOutOfBoundsException e){
+                    e.printStackTrace();
+                }
             }
 
             //calculation of perpenducular distance to prevent fisheye effect
@@ -98,11 +104,14 @@ public class playerClass extends JPanel{
             int drawEnd = lineHeight / 2 + screenHeight / 2;
             if(drawEnd >= screenHeight) drawEnd = screenHeight - 1;
 
-            int c = Color.RED.getRGB();
-            Graphics2D g2d = screen.createGraphics();
-            g2d.setColor(new Color(c));
+            Color c;
+            if(side == 1){
+                c = new Color(255, 0, 0);
+            }else{
+                c = new Color(122, 0, 0);
+            }
+            g2d.setColor(c);
             g2d.drawLine(x, drawStart, x, drawEnd);
-            
         }
         return screen;
     }

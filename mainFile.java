@@ -18,7 +18,7 @@ public class mainFile {
         while(true){
             b = player.rayCast(win.getDimentions()[0], win.getDimentions()[1]);
             icon = new ImageIcon(b);
-            label = new JLabel(icon);
+            label = new JLabel(icon); 
             win.getContentPane().removeAll();
             win.getContentPane().add(label);
             win.revalidate();
