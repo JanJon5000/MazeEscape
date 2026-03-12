@@ -1,13 +1,13 @@
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
-public class labirynth {
+public class labirynth {    
     private byte map[][];
-    private short width;
-    private short height;
-    public labirynth(final short height, final short width){
+    private int width;
+    private int height;
+    public labirynth(final int height, final int width){
         this.width = width;
         this.height = height;
         this.map = new byte[width][height];
@@ -52,8 +52,8 @@ public class labirynth {
         }
         if(arePaths.size() == 1) isLeft = true;
         //determining walls needed fixing - how will upcoming loop work
-        short wallRow = 0;
-        short wallCol = 0;
+        int wallRow = 0;
+        int wallCol = 0;
         short[] offset = {0, 0};
         if(isLeft == false && isTop == false){
             wallRow = 0;
@@ -85,14 +85,15 @@ public class labirynth {
                 }
             }
         }
+        System.out.println(Arrays.deepToString(this.map));
     }
     public byte[][] arrayAccess(){
         return this.map;
     }
-    public short getWidth(){
+    public int getWidth(){
         return this.width;
     }
-    public short getHeight(){
+    public int getHeight(){
         return this.height;
     }
 }
