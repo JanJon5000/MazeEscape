@@ -30,10 +30,8 @@ public class playerClass extends JPanel{
                 found = true;
             }
         }
-        this.posX = startIndexes[0];
-        this.posY = startIndexes[1];
-        System.out.println(posX);
-        System.out.println(posY);
+        this.posX = startIndexes[0] + 0.1;
+        this.posY = startIndexes[1] + 0.1;
     }
     //function creating an image that is later displayed on the screen in the main window
     public BufferedImage rayCast(int screenWidth, int screenHeight){
@@ -96,7 +94,7 @@ public class playerClass extends JPanel{
                 }
                 try{
                     if(!(mapX > this.mazeWidth || mapY > this.mazeHeight || mapX < 0 || mapY < 0)){
-                         if(this.maze[mapX][mapY] > 0) hit = 1;
+                         if(this.maze[mapX][mapY] == 0) hit = 1;
                     }else
                         hit = 1;
                 }catch(ArrayIndexOutOfBoundsException e){
@@ -132,6 +130,9 @@ public class playerClass extends JPanel{
     double getDirY(){ return this.dirY; }
     double getPlaneX(){ return this.planeX; }
     double getPlaneY(){ return this.planeY; }
+    double getPosX(){ return this.posX; }
+    double getPosY(){ return this.posY; }
+
 
     void setDirX(double x){ this.dirX = x; }
     void setDirY(double x){ this.dirY = x; }
@@ -142,5 +143,29 @@ public class playerClass extends JPanel{
         this.dirY = y;
         this.planeX = px;
         this.planeY = py;
+    }
+    void setNewPos(double x, double y){
+        this.posX = x;
+        this.posY = y;
+    }
+
+    void mapDebug(){
+        System.out.println("");
+        for(int i=0;i<=this.mazeWidth;i++){
+            for(int j=0;j<=this.mazeHeight;j++){
+                if(i != (int)this.posX || j != (int)this.posY){
+                    if(this.maze[i][j] == constClass.PATH){
+                        System.out.print(" ");
+                    }else{
+                        System.out.print("█");
+                    }
+                }else
+                    System.out.print("P");
+            }
+            System.out.println("");
+        }
+        System.out.print(this.posX);
+            System.out.print(" ");
+            System.out.println(this.posY);
     }
 }       
