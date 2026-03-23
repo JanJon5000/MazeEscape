@@ -6,7 +6,8 @@ A game about escaping a maze - there is no lore FOR NOW, but it may be created i
 -[Image creation](#image-creation)
 
 -[Build With](#build-with)
-    
+
+
 <hr>
 
 ## Maze Generator
@@ -28,7 +29,8 @@ File creates a text version of the maze.
 <p>It was created just for presentation purposes to show generated maze from above</p>
 
 ## Used solutions and encountered problems
-<p>First problem that I encountered was how to implement the rotation. Firstly it was handled using MouseMotionListener object and mouseMoved method and Robot object to keep the cursor in the center of the window. It caused player to rotate in both directions while causing a lot of errors when mouse was moved too quickly - race of resources of some kind probably. It began to fix when the MouseMotionListener was replaced with KeyListener and the rotation was handled by A and D keys on the keyboard.</p>
+<p>Normal keyboards don't know when user presses two keys at the same time. Because of that the movement that was implemented in the game is based on a HashSet object. When the key is pressed, its character code is being saved in the set and removed when the key is released. That creates proper smooth movement.</p>
+
 
 
 ## Build with
