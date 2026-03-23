@@ -73,8 +73,11 @@ public class windowGUI extends JFrame implements KeyListener{
                 }
             }
 
-            if(win.currentlyPressed.contains("w")){
+            if(win.currentlyPressed.contains("w") || win.currentlyPressed.contains("s")){
                 double moveSpeed = win.frameTime * constClass.MOV_SPEED;
+                moveSpeed *= win.currentlyPressed.contains("w") ? 
+                (win.currentlyPressed.contains("s") ? 0 : 1) : 
+                (win.currentlyPressed.contains("s") ? -1 : 0);
 
                 double moveX = moveSpeed * win.player.getDirX();
                 double moveY = moveSpeed * win.player.getDirY();
