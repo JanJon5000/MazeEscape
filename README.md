@@ -1,4 +1,4 @@
-# MazeGame
+# Ultimate Maze Expierience
 A game about escaping a maze - there is no lore FOR NOW, but it may be created in the future.
 
 -[Maze generator](#maze-generator)
@@ -7,6 +7,7 @@ A game about escaping a maze - there is no lore FOR NOW, but it may be created i
 
 -[Build With](#build-with)
 
+-[In game experience](#in-game-experience)
 
 <hr>
 
@@ -31,15 +32,13 @@ File creates a text version of the maze.
 ## Used solutions and encountered problems
 <p>Normal keyboards don't know when user presses two keys at the same time. Because of that the movement that was implemented in the game is based on a HashSet object. When the key is pressed, its character code is being saved in the set and removed when the key is released. That creates proper smooth movement.</p>
 
+## In game experience:
+<img src="10.png">
+<img src="11.png">
+<img src="time.png">
+
 
 ## Build with
 <ul>
 <li>Java 23</li>
-</ul>
-
-## Knowledge sources
-<ul>
-<li>https://weblog.jamisbuck.org/2011/1/10/maze-generation-prim-s-algorithm</li>
-<li>various articles from https://www.geeksforgeeks.org/</li>
-<li>https://lodev.org/cgtutor/raycasting.html</li>
 </ul>
