@@ -32,7 +32,6 @@ File creates a text version of the maze.
 <p>Normal keyboards don't know when user presses two keys at the same time. Because of that the movement that was implemented in the game is based on a HashSet object. When the key is pressed, its character code is being saved in the set and removed when the key is released. That creates proper smooth movement.</p>
 
 
-
 ## Build with
 <ul>
 <li>Java 23</li>

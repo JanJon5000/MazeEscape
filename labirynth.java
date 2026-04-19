@@ -7,6 +7,8 @@ public class labirynth {
     private byte map[][];
     private int width;
     private int height;
+    private LinkedList<byte[]> paths = new LinkedList<byte[]>();
+
     public labirynth(final int height, final int width){
         this.width = width;
         this.height = height;
@@ -25,6 +27,8 @@ public class labirynth {
             if ( map[x][y] == constClass.WALL )
             {   
                 map[f[0]][f[1]] = map[x][y] = constClass.PATH;
+                this.paths.add(new byte[]{(byte)f[0], (byte)f[1]});
+                this.paths.add(new byte[]{(byte)x, (byte)y});
                 if ( x >= 2 && map[x-2][y] == constClass.WALL)
                     frontiers.add( new int[]{x-1,y,x-2,y} );
                 if ( y >= 2 && map[x][y-2] == constClass.WALL )
@@ -37,55 +41,20 @@ public class labirynth {
         }
         //code fixing two walls missing
         byte[][] placeholder = this.map;
-        this.map = new byte[width+1][height+1];
-        boolean isTop = false;
-        boolean isLeft = false;
-        Set<Byte> arePaths = new TreeSet<>();
-        for(short i=0;i<height;i++){
-            arePaths.add((byte)placeholder[0][i]);
-        }
-        if(arePaths.size() == 1) isTop = true;
-        //clear the set
-        arePaths.removeAll(arePaths);
-        for(short i=0;i<width;i++){
-            arePaths.add((byte)placeholder[i][0]);
-        }
-        if(arePaths.size() == 1) isLeft = true;
-        //determining walls needed fixing - how will upcoming loop work
-        int wallRow = 0;
-        int wallCol = 0;
-        short[] offset = {0, 0};
-        if(isLeft == false && isTop == false){
-            wallRow = 0;
-            wallCol = 0;
-            offset[0] = 1;
-            offset[1] = 1;
-        }else if(isLeft == true && isTop == false){
-            wallRow = 0;
-            wallCol = height;
-            offset[0] = 1;
-            offset[1] = 0;
-        }else if(isLeft == false && isTop == true){
-            wallRow = width;
-            wallCol = 0;
-            offset[0] = 0;
-            offset[1] = 1;
-        }else if(isLeft == true && isTop == true){
-            wallRow = width;
-            wallCol = height; 
-            offset[0] = 0;
-            offset[1] = 0;
-        }
-        for(short i=0;i<=width;i++){
-            for(short j=0;j<=height;j++){
-                if(i == wallRow || j == wallCol){
-                    map[i][j] = constClass.WALL;
+        this.map = new byte[width+2][height+2];
+        
+        for(int i=0;i<width+2;i++){
+            for(int j=0;j<height+2;j++){
+                if(i == 0 || j == 0 || i == width + 1 || j == height + 1){
+                    this.map[i][j] = constClass.WALL; 
                 }else{
-                    map[i][j] = placeholder[i-offset[0]][j-offset[1]];
+                    this.map[i][j] = placeholder[i-1][j-1]; 
                 }
             }
         }
-        System.out.println(Arrays.deepToString(this.map));
+        this.width = width + 1;
+        this.height = height + 1;
+        //System.out.println(Arrays.deepToString(this.map));
     }
     public byte[][] arrayAccess(){
         return this.map;
@@ -96,4 +65,9 @@ public class labirynth {
     public int getHeight(){
         return this.height;
     }
+
+    public LinkedList<byte[]> getPaths(){
+        return this.paths;
+    }
+
 }
