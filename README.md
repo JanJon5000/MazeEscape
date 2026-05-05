@@ -9,14 +9,16 @@ A game about escaping a maze. You need to escape 100 times to succeed and secure
 
 ## Maze Generator
 
-<p>File labirynth.java defines a class with constructor that creates a maze of wanted size. It is an implementation of Prim's algortihm that has 4 key steps of creating a maze:</p>
+<p>The file labyrinth.java defines a class with a constructor that generates a maze of a specified size. It is an implementation of Prim's algorithm, which follows these four key steps to create the maze:</p>
 <ol>
-    <li>Grid full of walls with dimensions x by y, where x and y are dimensions of the maze expected at the end</li>
-    <li>Pick a random wall, turn it into the path and "officialy" make it a part of the maze, as well as 4 walls near it</li>
-    <li>Pick a random wall AGAIN, but this time point number 2 is repeated only when it neighbours only ne path (wont create a loop)</li>
-    <li>Repeat point number 3 until almost no walls from the original grid are "outside" the maze</li>
+    <li>Initialize a grid full of walls with dimensions $x \times y$, representing the final size of the maze.</li>
+    <li>Pick a random starting cell, mark it as part of the maze, and add its neighboring walls to a list.</li>
+    <li>Pick a random wall from the list. If it neighbors only one cell that is already part of the maze, turn the wall into a path, mark the newly reached cell as part of the maze, and add its neighbors to the list.</li>
+    <li>Repeat step 3 until there are no more walls left in the list to process.</li>
 </ol>
-File creates a text version of the maze.
+The file then generates a text-based version of the maze below.
+<img src="maze.png">
+<br>
 
 ## In game experience:
 <img src="10.png">
