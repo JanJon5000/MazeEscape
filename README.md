@@ -1,13 +1,9 @@
-# Ultimate Maze Expierience
-A game about escaping a maze - there is no lore FOR NOW, but it may be created in the future.
+# Ultimate Maze Experience
+A game about escaping a maze. You need to escape 100 times to succeed and secure your completion time. There are no pauses and no saves. The game is very speedrun-oriented and features a persistent timer in the corner of the screen.
 
--[Maze generator](#maze-generator)
-
--[Image creation](#image-creation)
-
--[Build With](#build-with)
-
--[In game experience](#in-game-experience)
+-[Maze generator](#maze-generator) <br>
+-[In game experience](#in-game-experience) <br>
+-[Build with](#build-with)
 
 <hr>
 
@@ -21,16 +17,6 @@ A game about escaping a maze - there is no lore FOR NOW, but it may be created i
     <li>Repeat point number 3 until almost no walls from the original grid are "outside" the maze</li>
 </ol>
 File creates a text version of the maze.
-
-## Image Creation
-<p>Class defined in imageCreator.java converts text-based maze into a png image similar to below:</p>
-
-<img src="maze.png">
-
-<p>It was created just for presentation purposes to show generated maze from above</p>
-
-## Used solutions and encountered problems
-<p>Normal keyboards don't know when user presses two keys at the same time. Because of that the movement that was implemented in the game is based on a HashSet object. When the key is pressed, its character code is being saved in the set and removed when the key is released. That creates proper smooth movement.</p>
 
 ## In game experience:
 <img src="10.png">
